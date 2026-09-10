@@ -1,0 +1,3 @@
+<?php require 'header.php';$id=(int)($_GET['id']??0);$s=$pdo->prepare('SELECT p.*,u.name author FROM posts p JOIN users u ON p.author_id=u.id WHERE p.id=?');$s->execute([$id]);$p=$s->fetch();if(!$p){http_response_code(404);exit('게시글 없음');}?>
+<div class="card"><h2><?=e($p['title'])?></h2><p class="muted">작성자 <?=e($p['author'])?> · <?=$p['created_at']?></p><hr><div><?=nl2br(e($p['content']))?></div></div>
+<a class="btn gray" href="posts.php">목록</a><?php if(in_array(current_user()['role'],['admin','editor'],true)):?><a class="btn" href="post_form.php?id=<?=$p['id']?>">수정</a><?php endif;?><?php require 'footer.php';?>

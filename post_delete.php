@@ -1,0 +1,1 @@
+<?php require 'auth.php';require_role(['admin','editor']);$id=(int)($_GET['id']??0);$pdo->prepare('DELETE FROM posts WHERE id=?')->execute([$id]);header('Location:posts.php');exit;
