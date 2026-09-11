@@ -1,0 +1,21 @@
+{
+    "name": "Admin Lab PHP + MariaDB",
+
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+
+    "forwardPorts": [
+        8080
+    ],
+
+    "postCreateCommand": "sudo /usr/local/bin/setup-db.sh",
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "bmewburn.vscode-intelephense-client"
+            ]
+        }
+    }
+}
