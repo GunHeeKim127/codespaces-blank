@@ -2,10 +2,14 @@ FROM mcr.microsoft.com/devcontainers/php:1-8.3-bookworm
 
 USER root
 
+RUN find /etc/apt/sources.list.d -type f \
+    -exec sh -c 'grep -q "dl.yarnpkg.com" "$1" && rm -f "$1" || true' _ {} \;
+
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
         mariadb-server \
         mariadb-client \
+        php8.3-mysql \
     && rm -rf /var/lib/apt/lists/*
 
 COPY setup-db.sh /usr/local/bin/setup-db.sh
