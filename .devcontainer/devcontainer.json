@@ -1,9 +1,11 @@
 {
-    "name": "Admin Lab PHP + MariaDB",
-
-    "build": {
-        "dockerfile": "Dockerfile"
-    },
+    
+  "name": "PHP & MariaDB DevContainer",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  // 컨테이너가 시작될 때마다 자동으로 실행할 명령어
+  "postStartCommand": "sudo service mariadb start && sudo /usr/local/bin/setup-db.sh",
 
     "forwardPorts": [
         8080
