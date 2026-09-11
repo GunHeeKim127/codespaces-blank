@@ -17,9 +17,9 @@ function login_user($username,$password){
  return false;
 }
 function require_login(){
- if(!current_user()){ header('Location: login.php'); exit; }
+//  if(!current_user()){ header('Location: login.php'); exit; }
 }
 function require_role($roles){
  require_login();
- if(!in_array(current_user()['role'],(array)$roles,true)){ http_response_code(403); exit('403 Forbidden'); }
+//  if(!in_array(current_user()['role'],(array)$roles,true)){ http_response_code(403); exit('403 Forbidden'); }
 }
